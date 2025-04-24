@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -11,6 +12,7 @@ app.use(express.static(__dirname));
 const players = JSON.parse(fs.readFileSync('./players_cleaned_v3.json', 'utf-8'));
 
 // JSON API route
+app.use(cors());
 app.get('/players', (req, res) => {
   res.json(players);
 });
